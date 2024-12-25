@@ -41,7 +41,6 @@ export default function Home() {
       ],
       cta: "Get Started",
       popular: false,
-      gradient: "from-purple-500 via-pink-500 to-orange-500",
     },
     {
       name: "Smart AI Plan",
@@ -56,24 +55,24 @@ export default function Home() {
       ],
       cta: "Upgrade Now",
       popular: true,
-      gradient: "from-blue-500 via-cyan-500 to-teal-500",
     },
   ];
 
   return (
     <main className="relative min-h-screen bg-black overflow-hidden">
-      {/* Animated gradient background */}
-      <div className="fixed inset-0 bg-black">
-        <div className="absolute inset-0 bg-gradient-to-r from-violet-500/10 via-cyan-500/10 to-purple-500/10 animate-pulse" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_500px_at_50%_200px,#3b82f6,transparent)]" />
+      {/* Modern gradient background */}
+      <div className="fixed inset-0 bg-neutral-950">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-indigo-900/20 to-blue-900/30" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_800px_at_50%_-100px,rgba(56,89,255,0.2),transparent)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_600px_at_50%_800px,rgba(29,78,216,0.15),transparent)]" />
       </div>
 
-      {/* Noise texture overlay */}
+      {/* Noise texture */}
       <div className="fixed inset-0 bg-[url('/noise.png')] opacity-20" />
 
-      {/* Floating elements */}
+      {/* Ambient animation */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(15)].map((_, i) => (
           <div
             key={i}
             className="absolute animate-float"
@@ -84,7 +83,7 @@ export default function Home() {
               transform: `scale(${0.5 + Math.random()})`,
             }}
           >
-            <div className="w-4 h-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-30 blur-sm" />
+            <div className="w-4 h-4 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 opacity-20 blur-xl" />
           </div>
         ))}
       </div>
@@ -95,7 +94,7 @@ export default function Home() {
         <nav
           className={`fixed top-0 w-full z-50 transition-all duration-500 ${
             isScrolled
-              ? "bg-black/50 backdrop-blur-xl border-b border-white/10"
+              ? "bg-neutral-950/80 backdrop-blur-xl border-b border-white/10"
               : ""
           }`}
         >
@@ -103,8 +102,8 @@ export default function Home() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-violet-600 rounded-full blur group-hover:blur-md transition-all duration-300" />
-                  <div className="relative h-10 w-10 rounded-full bg-black flex items-center justify-center">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl blur group-hover:blur-md transition-all duration-300" />
+                  <div className="relative h-10 w-10 rounded-xl bg-neutral-950 flex items-center justify-center">
                     <svg
                       viewBox="0 0 24 24"
                       className="h-6 w-6"
@@ -134,14 +133,14 @@ export default function Home() {
                           y2="21"
                           gradientUnits="userSpaceOnUse"
                         >
-                          <stop stopColor="#818CF8" />
-                          <stop offset="1" stopColor="#C4B5FD" />
+                          <stop stopColor="#60A5FA" />
+                          <stop offset="1" stopColor="#818CF8" />
                         </linearGradient>
                       </defs>
                     </svg>
                   </div>
                 </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
+                <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
                   Prism
                 </span>
               </div>
@@ -154,15 +153,17 @@ export default function Home() {
                     className="relative text-white/70 hover:text-white transition-colors group"
                   >
                     {item}
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full transition-all duration-300" />
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 group-hover:w-full transition-all duration-300" />
                   </Link>
                 ))}
               </nav>
 
               <div className="flex items-center gap-4">
-                <Button className="relative group overflow-hidden bg-white/10 hover:bg-white/20 text-white border-0">
-                  <span className="relative z-10">Login</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                <Button className="relative group overflow-hidden bg-white/5 hover:bg-white/10 text-white border-0">
+                  <Link className="relative z-50" href="/dashboard">
+                    Login
+                  </Link>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 </Button>
                 <Button
                   className="md:hidden text-white"
@@ -176,7 +177,7 @@ export default function Home() {
 
             {/* Mobile menu */}
             {isMobileMenuOpen && (
-              <div className="md:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl border-t border-white/10">
+              <div className="md:hidden absolute top-full left-0 w-full bg-neutral-950/95 backdrop-blur-xl border-t border-white/10">
                 <div className="container py-4 flex flex-col space-y-4">
                   {["Features", "Pricing", "About"].map((item) => (
                     <Link
@@ -198,12 +199,12 @@ export default function Home() {
           <div className="container px-4">
             <div className="mx-auto max-w-3xl text-center">
               <div className="relative inline-block">
-                <Sparkles className="absolute -top-8 -left-8 h-6 w-6 text-yellow-500 animate-pulse" />
+                <Sparkles className="absolute -top-8 -left-8 h-6 w-6 text-blue-400 animate-pulse" />
                 <h1 className="text-4xl font-bold leading-tight tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
                   <span className="text-white">Transform Your </span>
                   <span className="relative">
-                    <span className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 blur-2xl opacity-50" />
-                    <span className="relative bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    <span className="absolute inset-0 bg-gradient-to-r from-blue-500 via-blue-400 to-indigo-500 blur-2xl opacity-50" />
+                    <span className="relative bg-gradient-to-r from-blue-400 via-blue-300 to-indigo-400 bg-clip-text text-transparent">
                       Instagram
                     </span>
                   </span>
@@ -217,22 +218,25 @@ export default function Home() {
               </p>
 
               <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-                <Button size="lg" className="relative group overflow-hidden">
-                  <span className="relative z-10 font-semibold">
+                <Button
+                  size="lg"
+                  className="relative group overflow-hidden h-12"
+                >
+                  <span className="relative z-10 font-semibold text-white">
                     Get Started
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:scale-110 transition-transform duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 group-hover:scale-110 transition-transform duration-300" />
+                  <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-20 group-hover:animate-shine" />
                 </Button>
                 <Button
                   size="lg"
-                  className="relative group overflow-hidden bg-transparent border border-indigo-500/50"
+                  className="relative group overflow-hidden bg-transparent border border-blue-500/30 h-12"
                 >
                   <span className="relative z-10 text-white group-hover:text-white transition-colors">
                     Learn More
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-violet-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/20 to-violet-600/20" />
-                  <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-20 group-hover:animate-shine" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/80 to-indigo-600/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-indigo-600/20" />
                 </Button>
               </div>
             </div>
@@ -240,7 +244,7 @@ export default function Home() {
             <div className="relative mt-20">
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-20" />
               <div className="relative h-40 md:h-96 w-full rounded-2xl overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 group-hover:opacity-75 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-blue-500/20 to-indigo-500/20 group-hover:opacity-75 transition-opacity duration-500" />
                 <Image
                   src="/Ig-creators.png"
                   alt="Community member"
@@ -256,10 +260,11 @@ export default function Home() {
         <section className="py-20 relative">
           <div className="container px-4">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <h2 className="text-3xl font-bold tracking-tighter text-white sm:text-5xl">
+              <h2 className="text-3xl font-bold tracking-tighter text-white sm:text-5xl inline-flex items-center gap-3">
                 Choose Your Plan
+                <Sparkles className="h-8 w-8 text-blue-400 animate-pulse" />
               </h2>
-              <p className="max-w-[900px] text-white/70">
+              <p className="max-w-[900px] text-lg text-white/70">
                 Select the perfect plan to boost your Instagram engagement
               </p>
             </div>
@@ -272,18 +277,25 @@ export default function Home() {
                   onMouseEnter={() => setActiveCard(index)}
                   onMouseLeave={() => setActiveCard(null)}
                 >
+                  {/* Card glow effect */}
                   <div
-                    className={`absolute inset-0 bg-gradient-to-r ${plan.gradient} opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500`}
+                    className={`absolute -inset-[1px] ${
+                      plan.popular
+                        ? "bg-gradient-to-r from-blue-500 to-indigo-500"
+                        : "bg-white/10"
+                    } rounded-3xl transition-opacity duration-300 ${
+                      activeCard === index ? "opacity-100" : "opacity-0"
+                    } group-hover:opacity-100`}
                   />
+
                   <Card
-                    className={`relative h-full backdrop-blur-xl border-white/10 ${
-                      activeCard === index ? "bg-white/10" : "bg-black/50"
-                    } hover:transform hover:-translate-y-1 transition-all duration-300`}
+                    className={`relative h-full backdrop-blur-xl border-0 bg-neutral-950/50
+                    hover:transform hover:-translate-y-1 transition-all duration-300`}
                   >
                     <CardHeader>
                       <div className="flex justify-between items-start">
                         <div>
-                          <CardTitle className="text-white">
+                          <CardTitle className="text-xl text-white">
                             {plan.name}
                           </CardTitle>
                           <CardDescription className="text-white/70">
@@ -291,7 +303,7 @@ export default function Home() {
                           </CardDescription>
                         </div>
                         {plan.popular && (
-                          <span className="px-3 py-1 text-xs font-medium text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-full">
+                          <span className="px-3 py-1 text-xs font-medium text-white bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full">
                             Popular
                           </span>
                         )}
@@ -316,11 +328,24 @@ export default function Home() {
                       </ul>
                     </CardContent>
                     <CardFooter>
-                      <Button className="w-full relative group/btn overflow-hidden bg-white/10 hover:bg-white/20 border-0">
-                        <span className="relative z-10">{plan.cta}</span>
-                        <div
-                          className={`absolute inset-0 bg-gradient-to-r ${plan.gradient} opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300`}
-                        />
+                      <Button
+                        className={`w-full relative group/btn overflow-hidden h-12 ${
+                          plan.popular
+                            ? "bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500"
+                            : "bg-white/5 hover:bg-white/10"
+                        }`}
+                      >
+                        <span className="relative z-10 font-medium text-white">
+                          {plan.cta}
+                        </span>
+                        {/* Shine effect for popular plan */}
+                        {plan.popular && (
+                          <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-20 group-hover/btn:animate-shine" />
+                        )}
+                        {/* Gradient hover effect for free plan */}
+                        {!plan.popular && (
+                          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/80 to-indigo-600/80 opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300" />
+                        )}
                       </Button>
                     </CardFooter>
                   </Card>
